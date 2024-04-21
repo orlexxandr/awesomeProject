@@ -12,7 +12,7 @@ const (
 	WRONG    = "Некорректный ввод"
 	MISMATCH = "Оба числа должны быть в одной системе счисления"
 	NEGATIVE = "Результатом операции с Римскими числами не может быть отрицательное число или ноль"
-	RANGE    = "Введенные римские числа не могут быть больше 10"
+	RANGE    = "Введенные числа не могут быть больше 10"
 )
 
 func main() {
@@ -79,6 +79,9 @@ func calculate(input string) string {
 		calcResult = a * b
 	default:
 		panic(WRONG)
+	}
+	if a > 10 || b > 10 {
+		panic(RANGE)
 	}
 	isRomanResult := isRoman(inputArray[0]) && isRoman(inputArray[2])
 	if isRomanResult && (a == 0 || b == 0) {
